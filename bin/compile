@@ -1,0 +1,29 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> preparing dirs"
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+
+echo "-----> making profile.d script"
+PROFILE_PATH="$BUILD_DIR/.profile.d/ffox.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+
+TOOLS_URL="https://s3.us-east-2.amazonaws.com/tel-serv/tools/tools.tar.gz"
+
+echo "TOOLS_URL = $TOOLS_URL" | indent
+
+echo "-----> Downloading tools"
+curl -L --silent $TOOLS_URL -o tools.tar.gz
+tar -xzvf tools.tar.gz
+
+echo "-----> Installing tools"
+echo 'export PATH="$PATH:${HOME}/vendor/tools/ffmpeg"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:${HOME}/vendor/tools/crossfade"' >> $PROFILE_PATH
