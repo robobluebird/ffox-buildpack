@@ -23,6 +23,9 @@ echo "-----> Downloading tools"
 curl -L --silent $TOOLS_URL -o tools.tar.gz
 tar -xzvf tools.tar.gz
 
+echo `pwd`
+echo `ls`
+
 echo "-----> Installing tools"
 echo 'export PATH="$PATH:${HOME}/vendor/tools/ffmpeg"' >> $PROFILE_PATH
 echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
