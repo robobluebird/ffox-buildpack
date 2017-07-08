@@ -28,10 +28,14 @@ curl -L --silent $FFMPEG_URL -o ffmpeg
 echo "-----> Downloading sox"
 curl -L --silent $SOX_URL -o sox
 
+echo "-----> Permissionizing"
+chmod 775 ffmpeg
+chmod 775 sox
+
 echo "       Current directory is: `pwd`"
 echo "       Current directory contents: `ls`"
 
-echo "-----> Installing tools"
+echo "-----> Exporting vendor path"
 echo 'export PATH="$PATH:${HOME}/vendor"' >> $PROFILE_PATH
 # echo "       appended ${HOME}/vendor/tools/ffmpeg to PATH"
 # echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
