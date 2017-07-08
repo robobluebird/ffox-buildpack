@@ -24,14 +24,16 @@ echo "-----> Downloading tools"
 curl -L $TOOLS_URL -o tools.tar.gz
 tar -xzvf tools.tar.gz
 
+echo "-----> Currently in directory `pwd`"
+echo "       Current directory contents: `ls`"
+
 echo "-----> Installing tools"
-echo "-----> PATH is $PATH"
 echo 'export PATH="$PATH:${HOME}/vendor/tools/ffmpeg"' >> $PROFILE_PATH
-echo "-----> appended ${HOME}/vendor/tools/ffmpeg to PATH"
+echo "       appended ${HOME}/vendor/tools/ffmpeg to PATH"
 echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
-echo "-----> appended ${HOME}/vendor/tools/sox to PATH"
+echo "       appended ${HOME}/vendor/tools/sox to PATH"
 echo 'export PATH="$PATH:${HOME}/vendor/tools/crossfade"' >> $PROFILE_PATH
-echo "-----> appended ${HOME}/vendor/tools/crossfade to PATH"
+echo "       appended ${HOME}/vendor/tools/crossfade to PATH"
 
 cd $HOME
 ffmpeg
