@@ -21,10 +21,12 @@ TOOLS_URL="https://s3.us-east-2.amazonaws.com/tel-serv/tools/tools.tar.gz"
 echo "TOOLS_URL = $TOOLS_URL" | indent
 
 echo "-----> Downloading tools"
-curl -L $TOOLS_URL -o tools.tar.gz
+curl -L --silent $TOOLS_URL -o tools.tar.gz
+
+echo "       Current directory contents: `ls`"
+
 tar -xzvf tools.tar.gz
 
-echo "-----> Currently in directory `pwd`"
 echo "       Current directory contents: `ls`"
 
 echo "-----> Installing tools"
