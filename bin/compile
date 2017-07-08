@@ -38,5 +38,5 @@ echo 'export PATH="$PATH:${HOME}/vendor/tools/crossfade"' >> $PROFILE_PATH
 echo "       appended ${HOME}/vendor/tools/crossfade to PATH"
 
 cd tools
-ffmpeg
-sox
+pwd
+ls
