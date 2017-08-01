@@ -32,13 +32,5 @@ echo "-----> Permissionizing"
 chmod 775 ffmpeg
 chmod 775 sox
 
-echo "       Current directory is: `pwd`"
-echo "       Current directory contents: `ls`"
-
 echo "-----> Exporting vendor path"
 echo 'export PATH="$PATH:${HOME}/vendor"' >> $PROFILE_PATH
-# echo "       appended ${HOME}/vendor/tools/ffmpeg to PATH"
-# echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
-# echo "       appended ${HOME}/vendor/tools/sox to PATH"
-# echo 'export PATH="$PATH:${HOME}/vendor/tools/crossfade"' >> $PROFILE_PATH
-# echo "       appended ${HOME}/vendor/tools/crossfade to PATH"
