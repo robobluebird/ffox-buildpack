@@ -13,17 +13,24 @@ cd $VENDOR_DIR
 
 echo "-----> making profile.d script"
 PROFILE_PATH="$BUILD_DIR/.profile.d/ffox.sh"
+echo "-----> profile path is $PROFILE_PATH"
 mkdir -p $(dirname $PROFILE_PATH)
 
-TOOLS_URL="https://s3.us-east-2.amazonaws.com/tel-serv/tools/tools.tar.gz"
+FFMPEG_URL="https://s3.us-east-2.amazonaws.com/tel-serv/tools/ffmpeg"
+SOX_URL="https://s3.us-east-2.amazonaws.com/tel-serv/tools/sox"
 
-echo "TOOLS_URL = $TOOLS_URL" | indent
+echo "FFMPEG_URL = $FFMPEG_URL" | indent
+echo "SOX_URL = $SOX_URL" | indent
 
-echo "-----> Downloading tools"
-curl -L --silent $TOOLS_URL -o tools.tar.gz
-tar -xzvf tools.tar.gz
+echo "-----> Downloading ffmpeg"
+curl -L --silent $FFMPEG_URL -o ffmpeg
 
-echo "-----> Installing tools"
-echo 'export PATH="$PATH:${HOME}/vendor/tools/ffmpeg"' >> $PROFILE_PATH
-echo 'export PATH="$PATH:${HOME}/vendor/tools/sox"' >> $PROFILE_PATH
-echo 'export PATH="$PATH:${HOME}/vendor/tools/crossfade"' >> $PROFILE_PATH
+echo "-----> Downloading sox"
+curl -L --silent $SOX_URL -o sox
+
+echo "-----> Permissionizing"
+chmod 775 ffmpeg
+chmod 775 sox
+
+echo "-----> Exporting vendor path"
+echo 'export PATH="$PATH:${HOME}/vendor"' >> $PROFILE_PATH
